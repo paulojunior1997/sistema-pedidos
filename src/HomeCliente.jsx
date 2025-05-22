@@ -4,21 +4,22 @@ import "./App.css";
 const categorias = [
   {
     nome: "Marmitas",
-    imagem: "https://cdn-icons-png.flaticon.com/512/1046/1046784.png",
+    imagem: "/img/marmita.jpg",
   },
   {
     nome: "Bebidas",
-    imagem: "https://cdn-icons-png.flaticon.com/512/701/701995.png",
+    imagem: "/img/bebida.jpg",
   },
   {
     nome: "Congeladas",
-    imagem: "https://cdn-icons-png.flaticon.com/512/3068/3068619.png",
+    imagem: "/img/congelada.jpg",
   },
   {
     nome: "Sobremesas",
-    imagem: "https://cdn-icons-png.flaticon.com/512/2740/2740650.png",
+    imagem: "/img/sobremesa.jpg",
   },
 ];
+
 
 export default function AppPedido() {
   return (
