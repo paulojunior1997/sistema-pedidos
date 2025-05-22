@@ -1,21 +1,11 @@
-// src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AdminRetaguarda from "./AdminRetaguarda";
 import PedidoMarmita from "./PedidoMarmita";
-import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
+import AdminRetaguarda from "./AdminRetaguarda";
 import Login from "./Login";
+import { useState } from "react";
 
 function App() {
-  const [usuario, setUsuario] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUsuario(user);
-    });
-    return () => unsubscribe();
-  }, []);
+  const [logado, setLogado] = useState(false);
 
   return (
     <Router>
@@ -23,7 +13,7 @@ function App() {
         <Route path="/" element={<PedidoMarmita />} />
         <Route
           path="/admin"
-          element={usuario ? <AdminRetaguarda /> : <Login onLogin={() => window.location.reload()} />}
+          element={logado ? <AdminRetaguarda /> : <Login onLogin={() => setLogado(true)} />}
         />
       </Routes>
     </Router>

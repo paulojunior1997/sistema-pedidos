@@ -1,17 +1,19 @@
 // src/Login.jsx
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth } from "./firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
-function Login({ onLogin }) {
+function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
+  const navigate = useNavigate();
 
   const fazerLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, senha);
-      onLogin();
+      navigate("/painel");
     } catch (e) {
       setErro("❌ E-mail ou senha inválidos.");
     }
